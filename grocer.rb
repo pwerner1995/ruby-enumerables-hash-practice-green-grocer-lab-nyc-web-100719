@@ -9,7 +9,7 @@ def consolidate_cart(cart)
     cart_hash = cart_hash.merge(cart[i])
     i += 1 
   end
-  p cart_hash
+  cart_hash
 end
 
 def apply_coupons(cart, coupons)
@@ -33,7 +33,7 @@ def apply_coupons(cart, coupons)
     i +=1 
   end
   cart = cart.merge(coupon_hash)
-  p cart 
+  cart 
 end
 
 def apply_clearance(cart)
