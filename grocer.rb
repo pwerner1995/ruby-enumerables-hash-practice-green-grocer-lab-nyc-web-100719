@@ -15,7 +15,6 @@ end
 def apply_coupons(cart, coupons)
   i = 0 
   coupon_hash = {}
-  p coupons 
   while coupons.length> i do 
     cart.each_key do |key|
         
