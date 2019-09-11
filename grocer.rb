@@ -15,14 +15,27 @@ end
 def apply_coupons(cart, coupons)
   i = 0 
   coupon_hash = {}
+  p coupons 
   while coupons.length> i do 
     cart.each_key do |key|
-      if key == coupons[i][:item]
-        coupon_hash={
-          coup
+        
+      if coupons[i][:item] == key && !coupon_hash.key?("#{key} W/COUPON")
+        coupon_hash["#{key} W/COUPON"]={
+            :price => (coupons[i][:cost]/coupons[i][:num]),
+            :clearance => cart[key][:clearance],
+            :count => coupons[i][:num]
         }
+        cart[key][:count] -= coupons[i][:num]
+      elsif coupons[i][:item] == key && coupon_hash.key?("#{key} W/COUPON")
+        coupon_hash["#{key} W/COUPON"][:count] = (coupons[i][:num] * coupons.count(coupons[i]))
+        cart[key][:count] -= coupons[i][:num]
+      end
     end
-  end 
+    i +=1 
+  end
+  
+  cart = cart.merge(coupon_hash)
+  p cart 
 end
 
 def apply_clearance(cart)
