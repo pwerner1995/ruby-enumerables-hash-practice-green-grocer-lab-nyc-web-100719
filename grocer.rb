@@ -13,7 +13,16 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  # code here
+  i = 0 
+  coupon_hash = {}
+  while coupons.length> i do 
+    cart.each_key do |key|
+      if key == coupons[i][:item]
+        coupon_hash={
+          coup
+        }
+    end
+  end 
 end
 
 def apply_clearance(cart)
