@@ -24,7 +24,7 @@ def apply_coupons(cart, coupons)
             :count => coupons[i][:num]
         }
         cart[key][:count] -= coupons[i][:num]
-      elsif coupons[i][:item] == key && coupon_hash.key?("#{key} W/COUPON")
+      elsif coupons[i][:item] == key && coupon_hash.key?("#{key} W/COUPON") && cart[key][:count] > coupon_hash["#{key} W/COUPON"][:count]
         coupon_hash["#{key} W/COUPON"][:count] = (coupons[i][:num] * coupons.count(coupons[i]))
         cart[key][:count] -= coupons[i][:num]
       end
