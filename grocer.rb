@@ -17,7 +17,6 @@ def apply_coupons(cart, coupons)
   coupon_hash = {}
   while coupons.length> i do 
     cart.each_key do |key|
-        
       if coupons[i][:item] == key && !coupon_hash.key?("#{key} W/COUPON")
         coupon_hash["#{key} W/COUPON"]={
             :price => (coupons[i][:cost]/coupons[i][:num]),
